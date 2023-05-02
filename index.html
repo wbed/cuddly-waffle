@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<head>
+	<title>Database Access</title>
+</head>
+<body>
+	<h1>employees.db</h1>
+
+	<!-- Form to add employee data -->
+	<form method="POST" action="{{ url_for('add_employee') }}">
+	    <div class="form-group">
+	        <label for="first_name">First Name</label>
+	        <input type="text" class="form-control" name="first_name" required>
+	    </div>
+	    <div class="form-group">
+	        <label for="last_name">Last Name</label>
+	        <input type="text" class="form-control" name="last_name" required>
+	    </div>
+	    <div class="form-group">
+	        <label for="department">Department</label>
+	        <input type="text" class="form-control" name="department" required>
+	    </div>
+	    <div class="form-group">
+	        <label for="salary">Salary</label>
+	        <input type="text" class="form-control" name="salary" required>
+	    </div>
+	    <button type="submit" class="btn btn-primary">Add Employee</button>
+	</form>
+
+	<!--
+
+	Form to remove employee data
+
+	<form action="remove_employee.php" method="post">
+		<h2>Remove Employee Data</h2>
+		<label for="search_criteria">Search by ID or Name:</label>
+		<input type="text" name="search_criteria" id="search_criteria"><br>
+		<input type="submit" value="Search">
+	</form>
+	-->
+
+	<!-- Table to display employee data -->
+	<h2>Employee Data</h2>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Department</th>
+			<th>Salary</th>
+		</tr>
+		{% for row in employees %}
+			<tr>
+				<td>{{ row[0] }}</td>
+				<td>{{ row[1] }}</td>
+				<td>{{ row[2] }}</td>
+				<td>{{ row[3] }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+</body>
+</html>
